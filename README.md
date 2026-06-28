@@ -3,6 +3,9 @@
 ## 概要
 材料の登録・検索・編集・削除・入出庫ができる在庫管理アプリです。
 
+## 公開URL
+https://material-stock-app.onrender.com/
+
 ## 使用技術
 
 - HTML
