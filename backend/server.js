@@ -1,3 +1,5 @@
+
+
 // SQLite(DB)を読み込む
 const db = require("./db");
 
@@ -18,6 +20,15 @@ app.use(cors());
 
 // JSONを受け取れるようにする
 app.use(express.json());
+
+const path = require("path");
+
+// frontendフォルダを公開
+app.use(express.static(path.join(__dirname, "../frontend")));
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/index.html"));
+});
 
 // ==========================================
 // ポート番号
