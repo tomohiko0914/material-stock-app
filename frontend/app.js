@@ -1,4 +1,14 @@
 // ==========================================
+// APIのURL
+// ローカルとRenderを自動で切り替える
+// ==========================================
+const API_URL =
+  location.hostname === "localhost" ||
+  location.hostname === "127.0.0.1"
+    ? "http://localhost:3000"
+    : "https://material-stock-app.onrender.com";
+
+// ==========================================
 // 材料データを保存する配列
 // ==========================================
 
@@ -79,7 +89,7 @@ function addMaterial() {
     return;
   }
 
-  fetch("http://localhost:3000/materials", {
+  fetch(`${API_URL}/materials`, {
     method: "POST",
 
     headers: {
@@ -215,53 +225,6 @@ function displayMaterials() {
   });
 }
 
-// ==========================================
-// 入庫
-// ==========================================
-function increaseStock(id, stock) {
-  fetch(`http://localhost:3000/materials/${id}`, {
-    method: "PUT",
-
-    headers: {
-      "Content-Type": "application/json",
-    },
-
-    body: JSON.stringify({
-      stock: stock + 1,
-    }),
-  })
-    .then((response) => response.json())
-
-    .then(() => {
-      loadMaterials();
-    });
-}
-
-// ==========================================
-// 出庫
-// ==========================================
-function decreaseStock(id, stock) {
-  if (stock <= 0) {
-    return;
-  }
-
-  fetch(`http://localhost:3000/materials/${id}`, {
-    method: "PUT",
-
-    headers: {
-      "Content-Type": "application/json",
-    },
-
-    body: JSON.stringify({
-      stock: stock - 1,
-    }),
-  })
-    .then((response) => response.json())
-
-    .then(() => {
-      loadMaterials();
-    });
-}
 
 // ==========================================
 // 材料を削除する関数
@@ -277,7 +240,7 @@ function deleteMaterial(id) {
     return;
   }
 
-  fetch(`http://localhost:3000/materials/${id}`, {
+  fetch(`${API_URL}/materials/${id}`, {
     method: "DELETE",
   })
     .then((res) => res.json())
@@ -301,7 +264,7 @@ searchInput.addEventListener("input", function () {
 // dbから読み込む関数
 // ==========================================
 function loadMaterials() {
-  fetch("http://localhost:3000/materials")
+  fetch(`${API_URL}/materials`)
     .then((response) => response.json())
 
     .then((data) => {
@@ -354,7 +317,7 @@ function updateMaterial() {
   const stock = Number(document.getElementById("stock").value);
   const storageLocation = document.getElementById("storageLocation").value;
 
-  fetch(`http://localhost:3000/materials/${editingId}`, {
+  fetch(`${API_URL}/materials/${editingId}`, {
     method: "PUT",
 
     headers: {

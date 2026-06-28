@@ -24,7 +24,11 @@ app.use(express.json());
 // ==========================================
 
 // サーバーを起動する番号
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`サーバー起動：http://localhost:${PORT}`);
+});
 
 // ==========================================
 // 材料一覧取得API
