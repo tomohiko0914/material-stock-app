@@ -23,6 +23,8 @@
 
 ## 起動方法
 
+```bash
 cd backend
 npm install
 npm run dev
+```
