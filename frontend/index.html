@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>材料在庫管理システム</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- アプリのタイトル -->
+
+    <header>
+      <h1>材料在庫管理システム</h1>
+    </header>
+
+    <div class="container">
+      <main>
+        <div class="form-area">
+          <h2>材料登録</h2>
+
+          <!-- ==========================
+        材料登録フォーム
+        ========================== -->
+          <label>材料名</label>
+          <input type="text" id="material" />
+
+          <label>高さ(H)</label>
+          <input type="number" id="height" placeholder="100" />
+
+          <label>幅(W)</label>
+          <input type="number" id="width" placeholder="200" />
+
+          <label>在庫数</label>
+          <input type="number" id="stock" />
+
+          <label>保管場所</label>
+          <input type="text" id="storageLocation" />
+
+          <button id="addBtn">登録</button>
+        </div>
+
+        <!-- ==========================================
+    検索エリア
+    ========================================== -->
+        <div class="search-area">
+          <label>🔍 材料名検索</label>
+
+          <input type="text" id="searchInput" placeholder="材料名を入力" />
+        </div>
+
+        <!-- ==========================
+     材料一覧
+    ========================== -->
+
+        <div class="inventory-area">
+          <h2>材料一覧</h2>
+
+          <!-- JavaScriptがここへカードを追加 -->
+          <div id="inventoryList"></div>
+        </div>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
